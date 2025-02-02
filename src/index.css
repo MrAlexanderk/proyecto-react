@@ -21,3 +21,8 @@
 .gallery{
   margin-bottom: 120px;
 }
+
+.option{
+  border: 1px solid #24515eaa;
+  border-radius: 10px;
+}
