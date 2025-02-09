@@ -3,7 +3,7 @@ import { FormCheck } from 'react-bootstrap';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
-const Register = () => {
+const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -101,4 +101,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login
