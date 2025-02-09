@@ -6,43 +6,53 @@ import withReactContent from 'sweetalert2-react-content'
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [error, setError] = useState(false);
-    const [terms, setTerms] = useState(false);
 
-
+    const emailData = "GranMaestroPanadero@gmail.com";
+    const passwordData = "123456";
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if(error){
             return;
         }
-        console.log("Formulario enviado", { email, password, newPassword }); 
+        
         const MySwal = withReactContent(Swal)
+        
+        if(email.toLowerCase() === emailData.toLowerCase() && password === passwordData){
+            MySwal.fire({
+                title: <p>Acceso concedido</p>,
+                didOpen: () => {
+                    // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+                    MySwal.fire(<p>Bienvenido/a! 🦔</p>)
+                },
+                })
+                  
+        }else{
+            MySwal.fire({
+                title: <p>Error al ingresar</p>,
+                didOpen: () => {
+                    // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+                    MySwal.fire(<p>El correo y la contraseña no coinciden. Vuelva a intentar</p>)
+                },
+                })
+        }
 
-        MySwal.fire({
-        title: <p>Hello World</p>,
-        didOpen: () => {
-            // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-            MySwal.fire(<p>El registro se ha completado con éxito. 🦔</p>)
-        },
-        })
+        
+
+
     };
 
-    const handleError = (passwordValue, newPasswordValue) => {
+    const handleError = (passwordValue) => {
         setErrorMessage('');
         
-        const isMatchError = passwordValue !== newPasswordValue;
-        const isMinLengthError = newPasswordValue.length < 6 || passwordValue.length < 6;
+        const isMinLengthError =  passwordValue.length < 6;
     
-        if (isMinLengthError || isMatchError) {
+        if (isMinLengthError) {
             setError(true);
-            let errorMes = `${isMinLengthError ? "*La nueva contraseña debe tener al menos 6 caracteres.<br/>" : ""}
-                            ${isMatchError ? "*Las contraseñas no coinciden." : ""}`;
-
+            let errorMes = `${isMinLengthError ? "*La nueva contraseña debe tener al menos 6 caracteres." : ""}`;
             setErrorMessage(errorMes);
-
             return;
         } 
         
@@ -53,9 +63,9 @@ const Login = () => {
 
   return (
     <>
-        <form id="register-form" onSubmit={handleSubmit}>
+        <form id="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-                <h2>Sign Up</h2>
+                <h2>Log In</h2>
                 <hr></hr>
 
                 <label htmlFor="email">Email</label>
@@ -68,33 +78,19 @@ const Login = () => {
                     name="password" 
                     onChange={(e) => { 
                         setPassword(e.target.value); 
-                        handleError(e.target.value, newPassword); 
+                        handleError(e.target.value); 
                     }} 
                     required 
                     placeholder="Create password"
                 />
-                <label htmlFor="new-password" type="password" >Confirm New Password</label>
-                <input 
-                    type="password" 
-                    id="new-password" 
-                    name="new-password" 
-                    onChange={(e) => { 
-                        setNewPassword(e.target.value); 
-                        handleError(password, e.target.value); 
-                    }} 
-                    required 
-                    placeholder="Confirm password"
-                />
+                
                 <small className="text-danger" dangerouslySetInnerHTML={{ __html: errorMessage }}></small>
-                <FormCheck className="d-flex align-items-center my-2 p-0">
-                    <FormCheck.Input type="checkbox" id="terms" required className="m-0 mx-1 me-2" onChange={(e) => setTerms(e.target.value)} />
-                    <FormCheck.Label htmlFor="terms" required className="m-0">I agree to the terms and conditions</FormCheck.Label>
-                </FormCheck>
+
                 <button 
-                        className={`btn mt-3 ${error || !terms || !email || !newPassword || !password ? "btn-secondary" : "btn-success"}`} 
+                        className={`btn mt-3 ${error || !email || !password ? "btn-secondary" : "btn-success"}`} 
                         type="submit" 
-                        disabled={error || !terms || !email || !newPassword || !password} >
-                    Sign Up</button>
+                        disabled={error || !email || !password} >
+                    Log In</button>
             </div>
         </form>
     </>
