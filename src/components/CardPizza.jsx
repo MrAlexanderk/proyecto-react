@@ -1,6 +1,4 @@
 const CardPizza = ({ name, price, ingredients, img }) => {
-    const ingredientsString = ingredients.join(", ") + ".";
-
     return (
         <div className="card ol-12 col-sm-6 col-lg-2 mb-3">
             <img src={img} className="card-img-top" alt={name} />

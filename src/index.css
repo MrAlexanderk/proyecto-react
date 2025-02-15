@@ -73,3 +73,48 @@ label{
   margin: 25px 0 0px 0;
 }
 
+.cart-page{
+  min-height: 100vh;
+  background-color: rgb(240, 240, 240);
+}
+
+.cart-item-butns{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  
+  p{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.cart-gallery{
+  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem;
+}
+
+.card-img-left{
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 25px 0;
+}
+
+.card-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.cart-card{
+  display: flex;
+  gap: 2rem;
+}
