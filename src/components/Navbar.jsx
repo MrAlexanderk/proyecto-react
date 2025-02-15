@@ -19,7 +19,7 @@ const Navbar = () => {
                         <a className={`nav-link option ${!token ? 'd-none' : ''}`} href="#">🔒Logout</a>
                         <a className={`nav-link option ${token ? 'd-none' : ''}`} href="#">🔐Login</a>
                         <a className={`nav-link option ${token ? 'd-none' : ''}`} href="#">🔐Register</a>
-                        <a className="nav-link option" href="#">🛒Total: {total}</a>
+                        <a className="nav-link option" href="#">🛒Total: {total.toLocaleString("es-CL")}</a>
                     </div>
                 </div>
             </div>
