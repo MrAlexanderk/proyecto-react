@@ -7,7 +7,7 @@ function Home() {
     return (
       <>
         <Header/>
-        <div className="gallery bg-light d-flex justify-content-center gap-3 px-5 py-5">
+        <div className="gallery bg-light row">
           {pizzas.map((pizza) => (
             <CardPizza
               key={pizza.id}

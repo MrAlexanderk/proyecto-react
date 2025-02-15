@@ -20,7 +20,15 @@
 
 .gallery{
   margin-bottom: 120px;
+  display: flex; 
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem;
+
 }
+
+
+
 
 .option{
   border: 1px solid #24515eaa;
@@ -64,3 +72,4 @@ input{
 label{
   margin: 25px 0 0px 0;
 }
+
