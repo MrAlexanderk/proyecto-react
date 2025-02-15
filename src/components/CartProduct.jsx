@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const CartProduct = ({ name, price, count, img, onAdd, onRemove, onDelete }) => {
     const [recuento, setRecuento] = useState(count);
-
-    useEffect(() => {
-        setRecuento(count);
-    }, [count]);
 
     const incrementar = () => {
         setRecuento(recuento + 1);
