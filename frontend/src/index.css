@@ -118,3 +118,60 @@ label{
   display: flex;
   gap: 2rem;
 }
+
+.main-card-container{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), url('./assets/Background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px;
+
+}
+
+.main-card{
+  box-shadow: #24515eaa 0px 0px 10px 0px;
+  margin: 50px 0px;
+  padding: 0;
+  border-radius: 5px;
+  max-width: 1000px;
+
+  max-height: 1400px;
+}
+
+.card-img-mid{
+  padding: 2px;
+  object-fit:cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.main-btn{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  translate: 50%;
+  font-size: 2rem;
+  transition: scale 0.15s;
+}
+.main-btn:hover{
+  scale: 1.05;
+  transition: scale 0.15s;
+}
+
+@keyframes priceMove {
+  0% {
+      transform: rotate(-5deg) scale(1.1);
+  }
+  50% {
+      transform: rotate(10deg) scale(0.8);
+  }
+  100% {
+      transform: rotate(-5deg) scale(1.1);
+  }
+}
+
+.price-anim {
+  display: inline-block;
+  animation: priceMove 1.5s ease-in-out infinite;
+  width: 120px;
+}

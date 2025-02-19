@@ -5,14 +5,19 @@ import Navbar from './components/Navbar'
 import Register from './components/Register'
 import Login from './components/Login'
 import Cart from './components/Cart'
+import Pizza from './components/Pizza'
+import { useState, useEffect } from 'react'
 
 function App() {
+
+
   return (
     <>
     
       <Navbar />
       {/* <Cart /> */}
-      <Home /> 
+      {/* <Home /> */}
+      <Pizza id={'p001'} />
       {/* <Register /> */}
       {/* <Login /> */}
       <Footer />
