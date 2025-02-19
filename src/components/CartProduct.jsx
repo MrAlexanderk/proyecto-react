@@ -21,7 +21,7 @@ const CartProduct = ({ name, price, count, img, onAdd, onRemove, onDelete }) => 
   return (
     <div className="cart-card">
         <img src={img} className="card-img-left" alt={name} />
-        <div className="card-body">
+        <div className="card-body-cart">
             <h3 className="card-title">Pizza {name}</h3>
             <hr />
             <h4 className="d-flex justify-content-center">${price.toLocaleString("es-CL")}</h4>

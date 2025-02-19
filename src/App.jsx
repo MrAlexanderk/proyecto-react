@@ -11,8 +11,8 @@ function App() {
     <>
     
       <Navbar />
-      <Cart />
-      {/* <Home /> */} 
+      {/* <Cart /> */}
+      <Home /> 
       {/* <Register /> */}
       {/* <Login /> */}
       <Footer />

@@ -107,7 +107,7 @@ label{
   border-radius: 25px 0;
 }
 
-.card-body{
+.card-body-cart{
   display: flex;
   justify-content: space-between;
   align-items: center;
