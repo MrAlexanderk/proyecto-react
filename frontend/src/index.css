@@ -99,6 +99,10 @@ label{
   gap: 2rem;
   padding: 3rem;
 }
+.card{
+  margin: 0;
+  padding: 0;
+}
 
 .card-img-left{
   width: 150px;

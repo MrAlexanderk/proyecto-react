@@ -13,11 +13,10 @@ function App() {
 
   return (
     <>
-    
       <Navbar />
       {/* <Cart /> */}
-      {/* <Home /> */}
-      <Pizza id={'p001'} />
+      <Home /> 
+      {/*<Pizza id={'p001'} />*/}
       {/* <Register /> */}
       {/* <Login /> */}
       <Footer />
