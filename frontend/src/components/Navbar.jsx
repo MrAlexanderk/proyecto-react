@@ -1,6 +1,8 @@
+import { Link} from 'react-router-dom';
+import { useState } from 'react';
 
 const Navbar = () => {
-    const token = true
+    const [token, setToken] = useState(true);
     const total = 25000
 
 
@@ -8,18 +10,20 @@ const Navbar = () => {
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Mamma Mia!</a>
+                <Link className="navbar-brand" to="/">Mamma Mia!</Link>
+
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav gap-3 ms-auto">
-                        <a className="nav-link active option" aria-current="page" href="#">🍕Home</a>
-                        <a className={`nav-link option ${!token ? 'd-none' : ''}`} href="#">🔓Profile</a>
-                        <a className={`nav-link option ${!token ? 'd-none' : ''}`} href="#">🔒Logout</a>
-                        <a className={`nav-link option ${token ? 'd-none' : ''}`} href="#">🔐Login</a>
-                        <a className={`nav-link option ${token ? 'd-none' : ''}`} href="#">🔐Register</a>
-                        <a className="nav-link option" href="#">🛒Total: ${total.toLocaleString("es-CL")}</a>
+                        <Link className="nav-link active option" aria-current="page" to="/">🍕Home</Link>
+                        <Link className={`nav-link option ${!token ? 'd-none' : ''}`} to="/profile">🔓Profile</Link>
+                        <Link className={`nav-link option ${!token ? 'd-none' : ''}`} to="/login" onClick={() => setToken(false)}>🔒 Logout</Link>
+
+                        <Link className={`nav-link option ${token ? 'd-none' : ''}`} to="/login">🔐Login</Link>
+                        <Link className={`nav-link option ${token ? 'd-none' : ''}`} to="/register">🔐Register</Link>
+                        <Link className="nav-link option" to="/cart">🛒Total: ${total.toLocaleString("es-CL")}</Link>
                     </div>
                 </div>
             </div>
