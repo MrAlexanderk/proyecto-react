@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Cart from './pages/Cart'
 import Pizza from './pages/Pizza'
 import Profile from './pages/Profile'
+import NotFound from './pages/NotFound'
 import { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -28,7 +29,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile/>} />
-
+        <Route path="*" element={<NotFound/>} />
 
       </Routes>
         <Footer />
