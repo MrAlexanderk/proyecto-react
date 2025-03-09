@@ -24,7 +24,7 @@ const CartProduct = ({ name, price, count, img, onAdd, onRemove, onDelete }) => 
         <div className="card-body-cart">
             <h3 className="card-title">Pizza {name}</h3>
             <hr />
-            <h4 className="d-flex justify-content-center">${price.toLocaleString("es-CL")}</h4>
+            <h4 className="d-flex justify-content-center">${(price * count).toLocaleString("es-CL")}</h4>
 
             <div className="cart-item-butns py-2">
                 <button type="button" onClick={decrementar} className={ recuento < 2 ? "btn btn-danger" : "btn btn-light"}><b>-</b></button>
