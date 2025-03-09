@@ -1,10 +1,10 @@
 import { Link} from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 const Navbar = () => {
+    const { cart, addToCart, removeFromCart, total } = useContext(CartContext);
     const [token, setToken] = useState(true);
-    const total = 25000
-
 
     return (
       <>

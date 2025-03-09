@@ -1,4 +1,13 @@
-const CardPizza = ({ name, price, ingredients, img }) => {
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
+
+const CardPizza = ({ id, name, price, ingredients, img }) => {
+    const { cart, addToCart, removeFromCart, total } = useContext(CartContext);
+    const indexFound = cart.findIndex(product => product.id === id);
+    let addedToCart = indexFound >= 0;
+    let count = cart[indexFound]?.count || 0;
+
     return (
         <div className="card col-12 col-sm-6 col-lg-3 mb-3">
             <img src={img} className="card-img-top" alt={name} />
@@ -12,8 +21,8 @@ const CardPizza = ({ name, price, ingredients, img }) => {
                 <hr />
                 <h4 className="d-flex justify-content-center">Precio: ${price.toLocaleString("es-CL")}</h4>
                 <div className="d-flex justify-content-between py-2">
-                    <a href="#" className="btn btn-success">Añadir al carrito</a>
-                    <a href="#" className="btn btn-primary">Ver más</a>
+                    <button className="btn btn-success" onClick={() => addToCart({ id, price, name, img })} >{addedToCart ? `Unidades en carrito: ${count}` : "Añadir al carrito"}</button>
+                    <button className="btn btn-primary">Ver más</button>
                 </div>
             </div>
         </div>

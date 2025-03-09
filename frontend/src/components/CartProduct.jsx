@@ -1,22 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const CartProduct = ({ name, price, count, img, onAdd, onRemove, onDelete }) => {
-    const [recuento, setRecuento] = useState(count);
+const CartProduct = ({ id, name, price, count, img, onAdd, onRemove }) => {
+    const { cart, addToCart, removeFromCart, total } = useContext(CartContext);
 
-    const incrementar = () => {
-        setRecuento(recuento + 1);
-        onAdd();
-    };
-    
-    const decrementar = () => {
-        if (recuento > 1) {
-          setRecuento(recuento - 1);
-          onRemove();
-        } else {
-            setRecuento(0);
-            onDelete();
-        }
-    };
+    const productFoundIndex = cart.findIndex(product => product.id === id);
+    if(productFoundIndex >= 0){
+        count = cart[productFoundIndex].count;
+    }
 
   return (
     <div className="cart-card">
@@ -27,9 +18,9 @@ const CartProduct = ({ name, price, count, img, onAdd, onRemove, onDelete }) => 
             <h4 className="d-flex justify-content-center">${(price * count).toLocaleString("es-CL")}</h4>
 
             <div className="cart-item-butns py-2">
-                <button type="button" onClick={decrementar} className={ recuento < 2 ? "btn btn-danger" : "btn btn-light"}><b>-</b></button>
-                <p>{recuento}</p>
-                <button type="button" onClick={incrementar} className="btn btn-light"><b>+</b></button>
+                <button type="button" onClick={() => removeFromCart({ id, price, name, img })} className={ count < 2 ? "btn btn-danger" : "btn btn-light"}><b>-</b></button>
+                <p>{count}</p>
+                <button type="button" onClick={() => addToCart({ id, price, name, img })} className="btn btn-light"><b>+</b></button>
             </div>
         </div>
     </div>
