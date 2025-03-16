@@ -24,16 +24,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pizza/:id" element={<Pizza />} />
-
             <Route path="/cart" element={<Cart />} />
-            {/*<Route path="/profile" element={<Profile />} />*/}
             <Route path="*" element={<NotFound />} />
-            
             <Route 
               path="/profile" 
               element={token ? <Profile /> : <Navigate to="/login" />} 
             />
-
             <Route 
               path="/register" 
               element={!token ? <Register /> : <Navigate to="/" />} 
