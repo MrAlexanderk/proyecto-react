@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-
+import { Link } from "react-router-dom";
 
 const CardPizza = ({ id, name, price, ingredients, img }) => {
-    const { cart, addToCart, removeFromCart, total } = useContext(CartContext);
+    const { cart, addToCart } = useContext(CartContext);
     const indexFound = cart.findIndex(product => product.id === id);
     let addedToCart = indexFound >= 0;
     let count = cart[indexFound]?.count || 0;
@@ -16,17 +16,21 @@ const CardPizza = ({ id, name, price, ingredients, img }) => {
                 <hr />
                 <h5 className="d-flex justify-content-start">🍕 Ingredientes:</h5>
                 <ul>
-                    {ingredients.map((ingredient) => <li key={ingredient}> {ingredient}</li>)}
+                    {ingredients.map((ingredient) => (
+                        <li key={ingredient}> {ingredient}</li>
+                    ))}
                 </ul>
                 <hr />
                 <h4 className="d-flex justify-content-center">Precio: ${price.toLocaleString("es-CL")}</h4>
                 <div className="d-flex justify-content-between py-2">
-                    <button className="btn btn-success" onClick={() => addToCart({ id, price, name, img })} >{addedToCart ? `Unidades en carrito: ${count}` : "Añadir al carrito"}</button>
-                    <button className="btn btn-primary">Ver más</button>
+                    <button className="btn btn-success" onClick={() => addToCart({ id, price, name, img })}>
+                        {addedToCart ? `Unidades en carrito: ${count}` : "Añadir al carrito"}
+                    </button>
+                    <Link to={`/pizza/${id}`} className="btn btn-primary">Ver más</Link>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default CardPizza;

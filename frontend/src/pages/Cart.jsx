@@ -2,9 +2,11 @@ import { useState, useContext } from "react";
 import CartProduct from "../components/CartProduct";
 import { pizzaCart } from '../assets/pizzas';
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
     const { cart, addToCart, removeFromCart, total } = useContext(CartContext);
+    const { token } = useContext(UserContext);
 
     return (
         <div className="cart-page d-flex justify-content-center">
@@ -26,7 +28,9 @@ const Cart = () => {
                 </div>
 
                 <h2>Total: ${total.toLocaleString("es-CL")}</h2>
-                <button className="btn btn-success">Pagar</button>
+                <button className="btn btn-success" disabled={!token}>Pagar</button>
+                {!token && <p className="text-danger"><i>Debes iniciar sesión para poder pagar</i></p>}
+                
             </div>
         </div>
     );

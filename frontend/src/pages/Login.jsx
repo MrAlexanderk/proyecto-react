@@ -1,9 +1,11 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import { FormCheck } from 'react-bootstrap';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { UserContext } from '../context/UserContext';
 
 const Login = () => {
+    const {token, login} = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -21,6 +23,7 @@ const Login = () => {
         const MySwal = withReactContent(Swal)
         
         if(email.toLowerCase() === emailData.toLowerCase() && password === passwordData){
+            login();
             MySwal.fire({
                 title: <p>Acceso concedido</p>,
                 didOpen: () => {
@@ -39,27 +42,7 @@ const Login = () => {
                 })
         }
 
-        
-
-
     };
-
-    const handleError = (passwordValue) => {
-        setErrorMessage('');
-        
-        const isMinLengthError =  passwordValue.length < 6;
-    
-        if (isMinLengthError) {
-            setError(true);
-            let errorMes = `${isMinLengthError ? "*La nueva contraseña debe tener al menos 6 caracteres." : ""}`;
-            setErrorMessage(errorMes);
-            return;
-        } 
-        
-        else {
-            setError(false);
-        }
-    };    
 
   return (
     <>
@@ -78,7 +61,6 @@ const Login = () => {
                     name="password" 
                     onChange={(e) => { 
                         setPassword(e.target.value); 
-                        handleError(e.target.value); 
                     }} 
                     required 
                     placeholder="Create password"
