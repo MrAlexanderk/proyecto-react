@@ -1,7 +1,9 @@
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Profile = () => {
-
-
+    const [email, setEmail] = useState(localStorage.getItem("email") || null);
+    const { token, logout } = useContext(UserContext);
 
     return (
         <>
@@ -18,14 +20,14 @@ const Profile = () => {
                     </div>
                     <div className="d-flex width-25 gap-2 align-items-center">
                         <label htmlFor="email" className="m-0 profile-label">Email</label>
-                        <input type="email" id="email" name="email" value={"A.Magno@conquista.com"} readOnly className="user-info"/>
+                        <input type="email" id="email" name="email" value={email ? email : "No User"} readOnly className="user-info"/>
                     </div>
 
                 </div>
                 <br></br>
                 <div className="d-flex justify-content-start flex-column width-25 gap-2">
                     <button>Edit Profile</button>
-                    <button>Log Out</button>
+                    <button onClick={logout}>Log Out</button>
                 </div>
             </div>
         </>
